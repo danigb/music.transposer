@@ -1,0 +1,42 @@
+{
+  "name": "music.transposer",
+  "version": "0.0.1",
+  "description": "Manipulate group of music notes in a functional way",
+  "main": "index.js",
+  "scripts": {
+    "test": "vows --spec test/*.js",
+    "docs": "docme API.md",
+    "browserify": "browserify --full-paths index.js > dist/music.transposer.js && browserify --full-paths index.js | uglifyjs > dist/music.transposer.min.js",
+    "disc": "discify ./dist/music.transposer.min.js > ./dist/disc.html",
+    "dist": "npm run browserify && ls -all dist/",
+    "coverage": "istanbul cover vows test/*.js",
+    "cover": "npm run coverage && open ./coverage/lcov-report/index.html",
+    "benchmarks": "node test/benchmarks/*.js",
+    "climate": "npm run coverage && npm run codeclimate",
+    "codeclimate": "CODECLIMATE_REPO_TOKEN=fcfefb53aa586b904e50df4da52d6dc294182107e236117758c3a048b17491ce codeclimate-test-reporter < coverage/lcov.info"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danigb/music.transposer.git"
+  },
+  "keywords": [
+    "note",
+    "transposition",
+    "music",
+    "music.kit"
+  ],
+  "author": "danigb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danigb/music.transposer/issues"
+  },
+  "homepage": "https://github.com/danigb/music.transposer#readme",
+  "devDependencies": {
+    "vows": "^0.8.1"
+  },
+  "dependencies": {
+    "music.gamut": "file:../gamut",
+    "music.notation": "file:../notation",
+    "music.operator": "file:../operator"
+  }
+}
